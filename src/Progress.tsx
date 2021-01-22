@@ -2,6 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 
+const WaveWrapper = styled.div`
+  min-height: 100vh;
+  min-width: 100vh;
+  position: relative;
+`;
+
 const WaveMove = keyframes`
   0%{
         transform: translate(-50%, -75%) rotate(0deg);
@@ -13,8 +19,9 @@ const WaveMove = keyframes`
 
 const WaveBox = styled.div`
   position: absolute;
-  width: 800px;
-  height: 800px;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
   transform: translate(-50%, -50%);
   background: #6bffe6;
   box-shadow: 0 5 5 0px #144137;
@@ -36,7 +43,7 @@ const Wave = styled.div`
 
 function Progress() {
   return (
-    <div>
+    <WaveWrapper>
       <header>
         <button>
           <Link to="/">back</Link>
@@ -45,7 +52,7 @@ function Progress() {
       <WaveBox>
         <Wave />
       </WaveBox>
-    </div>
+    </WaveWrapper>
   );
 }
 

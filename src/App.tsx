@@ -6,11 +6,12 @@ import { useState } from "react";
 import { AppForm } from "./AppForm";
 
 const AppBase = styled.div`
-  width: 100vh;
-  height: 100vh;
+  min-height: 100vh;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   background-color: #87f3e523;
 `;
 
@@ -18,16 +19,18 @@ const FormStyle = styled.div`
   display: flex;
   flex-direction: column;
   width: 300px;
-  margin-top: 15%;
-  padding-bottom: 16px;
-  border-bottom: 1px solid #aaa;
+  padding-left: auto;
+  padding-right: auto;
 `;
+
 const Footer = styled.footer`
-  display: flex;
-  align-items: center;
+  width: 100%;
+  text-align: center;
   background-color: rgba(30, 107, 117, 0.5);
   color: white;
-  border-radius: 15%;
+  padding: 30px 0;
+  position: absolute;
+  bottom: 0;
 `;
 
 function App() {
