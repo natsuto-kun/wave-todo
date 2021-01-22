@@ -1,11 +1,9 @@
-import * as React from 'react';
-import {Link} from 'react-router-dom';
-import { ToDoList } from './ToDoList';
+import * as React from "react";
+import { Link } from "react-router-dom";
+import { ToDoList } from "./ToDoList";
 import styled from "styled-components";
-import { useState } from 'react';
-import { title } from 'process';
-import { AppForm } from './AppForm';
-import { ListItem } from './ListItem';
+import { useState } from "react";
+import { AppForm } from "./AppForm";
 
 const AppBase = styled.div`
   width: 100vh;
@@ -23,30 +21,29 @@ const FormStyle = styled.div`
   margin-top: 15%;
   padding-bottom: 16px;
   border-bottom: 1px solid #aaa;
-`
+`;
 const Footer = styled.footer`
   display: flex;
   align-items: center;
   background-color: rgba(30, 107, 117, 0.5);
   color: white;
   border-radius: 15%;
-`
-
+`;
 
 function App() {
-  const [lists, setLists] = useState(ListItem);
-  
-  const addList = (list: string): void => {
-      setLists([...lists, list]);
-  }
+  const [list, setList] = useState<string[]>([]);
+
+  const addList = (item: string): void => {
+    setList([...list, item]);
+  };
 
   return (
     <AppBase>
       <FormStyle>
-        <AppForm onAddList={addList}/>
+        <AppForm onAddList={addList} />
       </FormStyle>
       <FormStyle>
-        <ToDoList lists={lists} />
+        <ToDoList list={list} />
       </FormStyle>
       <Footer>
         <Link to="/progress">進捗</Link>

@@ -1,7 +1,5 @@
-import { useState } from 'react';
-import { ListItem } from './ListItem';
-import App from './App';
-import styled from 'styled-components';
+import { useState } from "react";
+import styled from "styled-components";
 
 const Input = styled.input`
   border-radius: 3px;
@@ -10,7 +8,7 @@ const Input = styled.input`
   align-items: center;
   margin-left: auto;
   margin-right: auto;
-`
+`;
 
 const Button = styled.button`
   width: 120px;
@@ -18,26 +16,35 @@ const Button = styled.button`
   align-items: center;
   margin-left: auto;
   margin-right: auto;
-`
+`;
 
-export const AppForm = ( onAddList: any ) => {
-  const [text, setText] = useState('');
+interface Props {
+  onAddList: (item: string) => void;
+}
 
-const submitText = (event: any) => {
+export const AppForm = ({ onAddList }: Props) => {
+  const [text, setText] = useState("");
+
+  const submitText = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     onAddList(text);
-}
+    console.log({ text });
+  };
 
-    return (
+  return (
+    <div>
+      <form onSubmit={submitText}>
         <div>
-        <form onSubmit={ submitText }>
-        </form>
-        <div>
-          <Input type="text" value={ text } onChange={(event) => setText(event.target.value)} />
+          <Input
+            type="text"
+            value={text}
+            onChange={(event) => setText(event.target.value)}
+          />
         </div>
         <div>
-            <Button>+</Button>
+          <Button>+</Button>
         </div>
-        </div>
-    )
-}
+      </form>
+    </div>
+  );
+};
