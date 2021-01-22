@@ -2,45 +2,36 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 
+const WaveMove = keyframes`
+  0%{
+        transform: translate(-50%, -75%) rotate(0deg);
+    }
+  100%{
+        transform: translate(-50%, -75%) rotate(180deg);
+  }
+`;
+
 const WaveBox = styled.div`
   position: absolute;
-  width: 80%;
-  height: 150px;
-  bottom: 10px;
-  left: 50%;
+  width: 800px;
+  height: 800px;
   transform: translate(-50%, -50%);
-  background: #000;
-  box-shadow: 0 5 5 0px #49ffd8;
+  background: #6bffe6;
+  box-shadow: 0 5 5 0px #144137;
   overflow: hidden;
 `;
 
 const Wave = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: #49ffd8;
-  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
-  &:before {
-    background: #fff;
-    animation: rotation 5s linear infinite;
-    border-radius: 40%;
-  }
-  &:after {
-    content: "";
-    position: absolute;
-    width: 200%;
-    height: 150%;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -75%);
-    background: #fff;
-    border-radius: 45%;
-  }
-`;
-
-const WaveBody = keyframes`
-    to{
-        transform: translate(-50%, -75%) rotate(1turn);
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 150%;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -75%);
+  background: #fff;
+  border-radius: 40%;
+  animation: ${WaveMove} 4s linear infinite;
 `;
 
 function Progress() {
@@ -52,7 +43,7 @@ function Progress() {
         </button>
       </header>
       <WaveBox>
-        <Wave></Wave>
+        <Wave />
       </WaveBox>
     </div>
   );

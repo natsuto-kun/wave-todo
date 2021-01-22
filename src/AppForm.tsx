@@ -25,26 +25,23 @@ interface Props {
 export const AppForm = ({ onAddList }: Props) => {
   const [text, setText] = useState("");
 
-  const submitText = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const submitText = () => {
     onAddList(text);
     console.log({ text });
   };
 
   return (
     <div>
-      <form onSubmit={submitText}>
-        <div>
-          <Input
-            type="text"
-            value={text}
-            onChange={(event) => setText(event.target.value)}
-          />
-        </div>
-        <div>
-          <Button>+</Button>
-        </div>
-      </form>
+      <div>
+        <Input
+          type="text"
+          value={text}
+          onChange={(event) => setText(event.target.value)}
+        />
+      </div>
+      <div>
+        <Button onClick={submitText}>+</Button>
+      </div>
     </div>
   );
 };
