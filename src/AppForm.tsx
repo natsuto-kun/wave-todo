@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 
 const Base = styled.div`
-  width: 100%;
+  width: 300px;
   height: 100%;
   border: 1px solid aquamarine;
   margin: 12px;
@@ -24,13 +24,15 @@ const Input = styled.input`
 `;
 
 const Button = styled.button`
-  width: 120px;
-  background-color: #5ee7ff;
+  font-size: 20px;
+  display: inline-block;
+  color: #29787a;
+  border: double 4px #29787a;
+  border-radius: 10px;
+  background-color: #ffffff;
+  cursor: pointer;
   align-items: center;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: auto;
-  padding-right: auto;
+  margin: auto;
 `;
 
 interface Props {

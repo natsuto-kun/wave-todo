@@ -18,7 +18,6 @@ const AppBase = styled.div`
 const FormStyle = styled.div`
   display: flex;
   flex-direction: column;
-  width: 300px;
   padding-left: auto;
   padding-right: auto;
 `;
