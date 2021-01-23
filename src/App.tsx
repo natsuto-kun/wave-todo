@@ -2,8 +2,10 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import { ToDoList } from "./ToDoList";
 import styled from "styled-components";
-import { useState } from "react";
+import { useContext } from "react";
 import { AppForm } from "./AppForm";
+import { countContext } from "./contexts/countContext";
+import { IListItem, listContext } from "./contexts/listContext";
 
 const AppBase = styled.div`
   min-height: 100vh;
@@ -33,9 +35,11 @@ const Footer = styled.footer`
 `;
 
 function App() {
-  const [list, setList] = useState<string[]>([]);
+  const { count } = useContext(countContext);
+  const { list, setList } = useContext(listContext);
+  console.log(count);
 
-  const addList = (item: string): void => {
+  const addList = (item: IListItem): void => {
     setList([...list, item]);
   };
 
@@ -45,6 +49,7 @@ function App() {
         <AppForm onAddList={addList} />
       </FormStyle>
       <FormStyle>
+        <p>{count}</p>
         <ToDoList list={list} />
       </FormStyle>
       <Footer>

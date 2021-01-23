@@ -1,8 +1,7 @@
+import { useState } from "react";
+import { CheckBox } from "./components/CheckBox";
 import styled from "styled-components";
-
-interface Props {
-  list: string[];
-}
+import { IListItem } from "./contexts/listContext";
 
 const ToDoContainer = styled.div`
   display: flex;
@@ -15,33 +14,19 @@ const ToDoContainer = styled.div`
   padding: 4px 2px;
 `;
 
-const ToDo = styled.div`
-  padding-top: auto;
-`;
+const DeleteButton = styled.button``;
 
-const CheckBox = styled.input`
-  padding-left: 40px;
-  padding-bottom: 50%;
-  position: relative;
-  margin-right: 20px;
-  content: "";
-  display: block;
-  width: 30px;
-  height: 30px;
-  border: 1px solid #999;
-  border-radius: 4px;
-`;
+interface Props {
+  list: IListItem[];
+}
 
 export const ToDoList = ({ list }: Props) => {
   return (
     <div>
-      {list.map((list, index) => {
+      {list.map((item, index) => {
         return (
           <ToDoContainer>
-            <ToDo key={index}>
-              {list}
-              <CheckBox type="checkbox"></CheckBox>
-            </ToDo>
+            <CheckBox key={index} index={index} item={item} />
           </ToDoContainer>
         );
       })}

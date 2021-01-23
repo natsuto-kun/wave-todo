@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import styled from "styled-components";
+import { IListItem, listContext } from "./contexts/listContext";
 
 const Base = styled.div`
   width: 300px;
@@ -36,15 +37,15 @@ const Button = styled.button`
 `;
 
 interface Props {
-  onAddList: (item: string) => void;
+  onAddList: (item: IListItem) => void;
 }
 
 export const AppForm = ({ onAddList }: Props) => {
   const [text, setText] = useState("");
 
   const submitText = () => {
-    onAddList(text);
-    console.log({ text });
+    if (text === "") return;
+    onAddList({ isChecked: false, value: text });
     setText("");
   };
 

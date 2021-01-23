@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
+import { countContext } from "./contexts/countContext";
+import { ToDoList } from "./ToDoList";
 
 const WaveWrapper = styled.div`
   height: 100vh;
@@ -35,9 +37,11 @@ const Wave = styled.div`
 `;
 
 function Progress() {
+  const { count } = useContext(countContext);
   return (
     <WaveWrapper>
       <header>
+        <p>{count}</p>
         <button>
           <Link to="/">back</Link>
         </button>
