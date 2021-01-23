@@ -2,7 +2,10 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import { countContext } from "./contexts/countContext";
-import { ToDoList } from "./ToDoList";
+
+interface Props {
+  choseCount: number;
+}
 
 const WaveWrapper = styled.div`
   height: 100vh;
@@ -36,7 +39,73 @@ const Wave = styled.div`
   animation: ${WaveMove} 4s linear infinite;
 `;
 
-function Progress() {
+const WaveFirst = styled(Wave)`
+  content: "";
+  position: absolute;
+  width: 200vw;
+  height: 150vw;
+  top: calc(100vh - 100vw);
+  left: 50%;
+  transform: translate(-50%, -75%);
+  background: #fff;
+  border-radius: 40%;
+  animation: ${WaveMove} 4s linear infinite;
+`;
+
+const WaveSecond = styled(Wave)`
+  content: "";
+  position: absolute;
+  width: 200vw;
+  height: 150vw;
+  top: calc(100vh - 120vw);
+  left: 50%;
+  transform: translate(-50%, -75%);
+  background: #fff;
+  border-radius: 40%;
+  animation: ${WaveMove} 4s linear infinite;
+`;
+
+const WaveThird = styled(Wave)`
+  content: "";
+  position: absolute;
+  width: 200vw;
+  height: 150vw;
+  top: calc(100vh - 100vw);
+  left: 50%;
+  transform: translate(-50%, -75%);
+  background: #fff;
+  border-radius: 40%;
+  animation: ${WaveMove} 4s linear infinite;
+`;
+
+const WaveForth = styled(Wave)`
+  content: "";
+  position: absolute;
+  width: 200vw;
+  height: 150vw;
+  top: calc(100vh - 100vw);
+  left: 50%;
+  transform: translate(-50%, -75%);
+  background: #fff;
+  border-radius: 40%;
+  animation: ${WaveMove} 4s linear infinite;
+`;
+
+const WaveFive = styled(Wave)`
+  top: 0px;
+`;
+
+function Progress({ choseCount }: Props) {
+  const Waves = [
+    <WaveFirst />,
+    <WaveSecond />,
+    <WaveThird />,
+    <WaveForth />,
+    <WaveFive />,
+  ];
+
+  const WaveIf = (choseCount: number) => Waves[choseCount];
+
   const { count } = useContext(countContext);
   return (
     <WaveWrapper>
@@ -46,7 +115,18 @@ function Progress() {
           <Link to="/">back</Link>
         </button>
       </header>
-      <Wave />
+      <WaveThird />
+      {choseCount === 0 ? (
+        <WaveFirst />
+      ) : choseCount === 1 ? (
+        <WaveSecond />
+      ) : choseCount === 2 ? (
+        <WaveThird />
+      ) : choseCount === 3 ? (
+        <WaveForth />
+      ) : (
+        <WaveFive />
+      )}
     </WaveWrapper>
   );
 }
