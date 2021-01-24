@@ -1,6 +1,6 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import styled from "styled-components";
-import { IListItem, listContext } from "./contexts/listContext";
+import { IListItem } from "./contexts/listContext";
 
 const Base = styled.div`
   width: 300px;

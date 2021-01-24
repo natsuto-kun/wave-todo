@@ -61,7 +61,7 @@ function App() {
         <ToDoList list={list} />
       </FormStyle>
       <Footer>
-        <Link to="/progress">進捗</Link>
+        <Link to="/progress">Wave to Do!!</Link>
       </Footer>
     </AppBase>
   );

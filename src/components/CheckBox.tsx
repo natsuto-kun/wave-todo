@@ -17,9 +17,14 @@ const Check = styled.input`
   color: #00485e;
 `;
 
-const CheckText = styled.div`
-  text-align: center;
+const CheckContainer = styled.div`
   display: flex;
+`;
+
+const CheckText = styled.p`
+  text-align: center;
+  width: 100%;
+  margin: 0;
 `;
 
 interface Props {
@@ -45,14 +50,14 @@ export const CheckBox = ({ index, item }: Props) => {
   };
 
   return (
-    <CheckText>
+    <CheckContainer>
       <Check
         type="checkbox"
         id="Checkbox"
         checked={item.isChecked}
         onChange={checkedHandler}
       />
-      {item.value}
-    </CheckText>
+      <CheckText>{item.value}</CheckText>
+    </CheckContainer>
   );
 };

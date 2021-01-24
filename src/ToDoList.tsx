@@ -5,10 +5,10 @@ import { IListItem } from "./contexts/listContext";
 const ToDo = styled.div`
   font-size: 20px;
   color: #00485e;
+  vertical-align: middle;
 `;
 
 const ToDoContainer = styled.div`
-  display: inlene;
   border: 1px solid #00485e;
   margin: 12px;
   border-radius: 4px;

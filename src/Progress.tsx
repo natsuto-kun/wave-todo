@@ -3,10 +3,6 @@ import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import { countContext } from "./contexts/countContext";
 
-interface Props {
-  choseCount: number;
-}
-
 const WaveWrapper = styled.div`
   height: 100vh;
   width: 100vw;
@@ -54,7 +50,7 @@ const Wave = styled.div`
   position: relative;
   width: 200vw;
   height: 150vw;
-  top: calc(100vh - 150vw);
+  top: calc(100vh - 130vw);
   left: 50%;
   transform: translate(-50%, -75%);
   background: #fff;
@@ -126,15 +122,7 @@ const WaveFive = styled(Wave)`
   animation: ${WaveMove} 4s linear infinite;
 `;
 
-function Progress({ choseCount }: Props) {
-  const Waves = [
-    <WaveFirst />,
-    <WaveSecond />,
-    <WaveThird />,
-    <WaveForth />,
-    <WaveFive />,
-  ];
-
+function Progress() {
   const { count } = useContext(countContext);
   return (
     <WaveWrapper>
