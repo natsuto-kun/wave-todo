@@ -14,7 +14,15 @@ const AppBase = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background-color: #87f3e523;
+  background-color: #004e66;
+  padding-bottom: 100px;
+  box-sizing: border-box;
+`;
+
+const PopCount = styled.p`
+  color: white;
+  font-size: 20px;
+  font-weight: 5px;
 `;
 
 const FormStyle = styled.div`
@@ -27,9 +35,9 @@ const FormStyle = styled.div`
 const Footer = styled.footer`
   width: 100%;
   text-align: center;
-  background-color: rgba(30, 107, 117, 0.5);
+  background-color: #fcbe32;
   color: white;
-  padding: 30px 0;
+  padding: 20px 0;
   position: absolute;
   bottom: 0;
 `;
@@ -49,7 +57,7 @@ function App() {
         <AppForm onAddList={addList} />
       </FormStyle>
       <FormStyle>
-        <p>{count}</p>
+        <PopCount>完了しているタスク:{count}</PopCount>
         <ToDoList list={list} />
       </FormStyle>
       <Footer>

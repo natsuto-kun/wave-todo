@@ -12,9 +12,32 @@ const WaveWrapper = styled.div`
   width: 100vw;
   position: relative;
   bottom: 0;
-  background: #6bffe6;
+  background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
   box-shadow: 0 5 5 0px #144137;
   overflow: hidden;
+`;
+
+const Pop = styled.p`
+  z-index: 2;
+  color: #3e7ea3;
+  font-size: 40px;
+  font-weight: 5px;
+  position: absolute;
+  bottom: 5%;
+  left: 3%;
+`;
+
+const BackButton = styled.button`
+  font-size: 20px;
+  z-index: 2;
+  border: 2px solid #fff6f6;
+  border-radius: 3em 0.5em 2em 0.5em/0.4em 2em 0.5em 3em;
+  color: #fff9f9;
+  text-decoration: none;
+  text-align: center;
+  position: absolute;
+  bottom: 3%;
+  left: 3%;
 `;
 
 const WaveMove = keyframes`
@@ -28,36 +51,36 @@ const WaveMove = keyframes`
 
 const Wave = styled.div`
   content: "";
-  position: absolute;
+  position: relative;
   width: 200vw;
   height: 150vw;
-  top: calc(100vh - 85vw);
+  top: calc(100vh - 150vw);
   left: 50%;
   transform: translate(-50%, -75%);
   background: #fff;
-  border-radius: 40%;
+  border-radius: 43%;
   animation: ${WaveMove} 4s linear infinite;
 `;
 
 const WaveFirst = styled(Wave)`
   content: "";
-  position: absolute;
+  position: relative;
   width: 200vw;
-  height: 150vw;
-  top: calc(100vh - 100vw);
+  height: 180vw;
+  top: calc(100vh - 50vw);
   left: 50%;
   transform: translate(-50%, -75%);
   background: #fff;
-  border-radius: 40%;
+  border-radius: 43%;
   animation: ${WaveMove} 4s linear infinite;
 `;
 
 const WaveSecond = styled(Wave)`
   content: "";
-  position: absolute;
+  position: relative;
   width: 200vw;
-  height: 150vw;
-  top: calc(100vh - 120vw);
+  height: 180vw;
+  top: calc(100vh - 65vw);
   left: 50%;
   transform: translate(-50%, -75%);
   background: #fff;
@@ -67,10 +90,10 @@ const WaveSecond = styled(Wave)`
 
 const WaveThird = styled(Wave)`
   content: "";
-  position: absolute;
+  position: relative;
   width: 200vw;
-  height: 150vw;
-  top: calc(100vh - 100vw);
+  height: 180vw;
+  top: calc(100vh - 70vw);
   left: 50%;
   transform: translate(-50%, -75%);
   background: #fff;
@@ -80,10 +103,10 @@ const WaveThird = styled(Wave)`
 
 const WaveForth = styled(Wave)`
   content: "";
-  position: absolute;
+  position: relative;
   width: 200vw;
   height: 150vw;
-  top: calc(100vh - 100vw);
+  top: calc(100vh - 90vw);
   left: 50%;
   transform: translate(-50%, -75%);
   background: #fff;
@@ -92,7 +115,15 @@ const WaveForth = styled(Wave)`
 `;
 
 const WaveFive = styled(Wave)`
-  top: 0px;
+  position: relative;
+  width: 200vw;
+  height: 170vw;
+  top: calc(100vh - 100vw);
+  left: 50%;
+  transform: translate(-50%, -75%);
+  background: #fff;
+  border-radius: 40%;
+  animation: ${WaveMove} 4s linear infinite;
 `;
 
 function Progress({ choseCount }: Props) {
@@ -104,28 +135,25 @@ function Progress({ choseCount }: Props) {
     <WaveFive />,
   ];
 
-  const WaveIf = (choseCount: number) => Waves[choseCount];
-
   const { count } = useContext(countContext);
   return (
     <WaveWrapper>
-      <header>
-        <p>{count}</p>
-        <button>
-          <Link to="/">back</Link>
-        </button>
-      </header>
-      <WaveThird />
-      {choseCount === 0 ? (
+      <Pop>完了タスク:{count}</Pop>
+      <BackButton>
+        <Link to="/">back</Link>
+      </BackButton>
+      {count === 0 ? (
         <WaveFirst />
-      ) : choseCount === 1 ? (
+      ) : count === 1 ? (
         <WaveSecond />
-      ) : choseCount === 2 ? (
+      ) : count === 2 ? (
         <WaveThird />
-      ) : choseCount === 3 ? (
+      ) : count === 3 ? (
         <WaveForth />
-      ) : (
+      ) : count === 4 ? (
         <WaveFive />
+      ) : (
+        <Wave />
       )}
     </WaveWrapper>
   );

@@ -1,26 +1,26 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import { countContext } from "../contexts/countContext";
 import { IListItem, listContext } from "../contexts/listContext";
-
-const ToDo = styled.div`
-  padding-top: auto;
-`;
 
 const Check = styled.input`
   padding-left: 40px;
   padding-bottom: 50%;
   position: relative;
-  margin-right: 20px;
   content: "";
-  display: block;
-  width: 30px;
-  height: 30px;
-  border: 1px solid #999;
+  display: flex;
+  width: 23px;
+  height: 23px;
+  border: 1px solid #00485e;
   border-radius: 4px;
+  background-color: #fff;
+  color: #00485e;
 `;
 
-const DeleteButton = styled.button``;
+const CheckText = styled.div`
+  text-align: center;
+  display: flex;
+`;
 
 interface Props {
   index: number;
@@ -45,7 +45,7 @@ export const CheckBox = ({ index, item }: Props) => {
   };
 
   return (
-    <ToDo>
+    <CheckText>
       <Check
         type="checkbox"
         id="Checkbox"
@@ -53,7 +53,6 @@ export const CheckBox = ({ index, item }: Props) => {
         onChange={checkedHandler}
       />
       {item.value}
-      <DeleteButton>×</DeleteButton>
-    </ToDo>
+    </CheckText>
   );
 };
